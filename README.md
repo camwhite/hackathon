@@ -20,16 +20,17 @@ Installation
 
 Clone this repository into *project-folder*, then do the following:
 
-Build & start back-end:
-1. cd *project-folder*/server
-2. bundle install
-3. rake db:create
-4. rake db:migrate
-5. rails s (to start)
+####Build & start back-end:
 
-Build & start front-end:
-1. cd .. (to return to *project-folder*)
-2. cd client
-3. bower install
-4. (sudo) npm install
-5. grunt serve (to start)
+1.  cd *project-folder*/server
+2.  bundle install
+3.  rake db:create
+4.  rake db:migrate
+5.  rails s (to start)
+
+####Build & start front-end:
+1.  cd .. (to return to *project-folder*)
+2.  cd client
+3.  bower install
+4.  (sudo) npm install
+5.  grunt serve (to start)
