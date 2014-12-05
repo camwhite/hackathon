@@ -45,7 +45,7 @@ app.config(function ($routeProvider, $locationProvider) {
 });
 
 app.factory('User', ['$resource', function($resource) {
-    return $resource('/api/users/:id.json', null, {
+    return $resource('/api/user/:id.json', null, {
       'update': { method:'PUT' }
     });
 }]);
