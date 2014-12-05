@@ -30,13 +30,20 @@ app.config(function ($routeProvider, $locationProvider) {
         templateUrl: 'views/user_sessions/new.html',
         controller: 'UserSessionsCtrl'
       })
+      .when('/sign_up', {
+        templateUrl: 'views/user_registrations/new.html',
+        controller: 'UserRegistrationsCtrl'
+      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
       .when('/users', {
         templateUrl: 'views/users.html',
-        controller: 'UsersCtrl'
+        controller: 'UsersCtrl',
+        resolve: {
+          auth: ['$auth', function($auth) { return $auth.validateUser(); }]
+        }
       })
       .otherwise({
         redirectTo: '/'
@@ -45,7 +52,7 @@ app.config(function ($routeProvider, $locationProvider) {
 });
 
 app.factory('User', ['$resource', function($resource) {
-    return $resource('/api/user/:id.json', null, {
+    return $resource('/api/users/:id.json', null, {
       'update': { method:'PUT' }
     });
 }]);

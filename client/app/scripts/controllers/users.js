@@ -9,5 +9,6 @@
 */
 angular.module('clientApp')
 .controller('UsersCtrl', ['$scope', 'User', function ($scope, User) {
+  console.log('In UsersCtrl');
   $scope.users = User.query();
 }]);
