@@ -16,7 +16,8 @@ var app = angular.module('clientApp', [
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ng-token-auth'
 ]);
 
 app.config(function ($routeProvider, $locationProvider) {
@@ -24,6 +25,10 @@ app.config(function ($routeProvider, $locationProvider) {
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
+      })
+      .when('/sign_in', {
+        templateUrl: 'views/user_sessions/new.html',
+        controller: 'UserSessionsCtrl'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
@@ -43,4 +48,9 @@ app.factory('User', ['$resource', function($resource) {
     return $resource('/api/users/:id.json', null, {
       'update': { method:'PUT' }
     });
+}]);
+
+app.run(['$rootScope', '$location', function($rootScope, $location) {
+  $rootScope.$on('auth:login-success', function() { $location.path('/');
+  });
 }]);
