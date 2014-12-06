@@ -45,6 +45,10 @@ app.config(function ($routeProvider, $locationProvider) {
           auth: ['$auth', function($auth) { return $auth.validateUser(); }]
         }
       })
+      .when('/translation', {
+        templateUrl: 'views/translation.html',
+        controller: 'TranslationCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
