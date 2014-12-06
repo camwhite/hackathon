@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  resources :translations, except: [:new, :edit]
+  resources :languages, except: [:new, :edit]
+  get 'languages/index'
+
+  get 'languages/create'
+
+  get 'languages/update'
+
+  get 'languages/destroy'
+
   scope '/api' do
     mount_devise_token_auth_for 'User', at: '/auth'
     resources :users, except: [:new, :edit]

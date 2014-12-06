@@ -11,7 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20141206100316) do
+
+  create_table "languages", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "translations", force: true do |t|
+    t.integer  "user_id"
+    t.string   "status"
+    t.text     "fromText"
+    t.text     "toText"
+    t.integer  "fromLanguage"
+    t.integer  "toLanguage"
+    t.datetime "completedAt"
+    t.integer  "translator"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "translations", ["fromLanguage", "toLanguage"], name: "index_translations_on_fromLanguage_and_toLanguage"
+  add_index "translations", ["status"], name: "index_translations_on_status"
+  add_index "translations", ["translator"], name: "index_translations_on_translator"
+  add_index "translations", ["user_id"], name: "index_translations_on_user_id"
+=======
 ActiveRecord::Schema.define(version: 20141206090450) do
+>>>>>>> a5f03158d3f741e8ab4f6eb685269eae60800452
 
   create_table "users", force: true do |t|
     t.string   "provider",                            null: false
