@@ -2,6 +2,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700|Raleway:400,500,600,700,300);
+@import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 
 .browsehappy {
   margin: 0.2em 0;
@@ -13,7 +15,43 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 /* Space out content a bit */
 body {
   padding-top: 20px;
-  padding-bottom: 20px;
+  font-family: 'Raleway';
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Montserrat';
+  font-weight: 700;
+}
+
+.hero-unit {
+  position: relative;
+  width: 100%;
+  padding: 100px;
+  background: url('/images/landing-bg.jpg') no-repeat center/cover;
+  h1, .lead {
+    margin: 0;
+    padding: 30px;
+    background: rgba(white, .7);
+  }
+  h1 {
+    font: 700 9.9vw 'Montserrat';
+    border-bottom: 2px solid black;
+  }
+  a {
+    margin-top: 10px;
+  }
+}
+
+.selling-points {
+  margin: 30px 0;
+  .point {
+    h2, p {
+      text-align: center;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -32,6 +70,7 @@ body {
   h3 {
     margin-top: 0;
     margin-bottom: 0;
+    margin-left: 8px;
     line-height: 40px;
     padding-bottom: 19px;
   }
@@ -39,14 +78,15 @@ body {
 
 /* Custom page footer */
 .footer {
-  padding-top: 19px;
+  margin: 0;
+  padding: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
+  background: #333;
+  text-align: right;
 }
 
-.container-narrow > hr {
-  margin: 30px 0;
-}
+
 
 /* Main marketing message and sign up button */
 .jumbotron {
