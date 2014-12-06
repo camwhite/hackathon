@@ -1,16 +1,34 @@
-<h1>New User Registration</h1>
-  <form ng-submit="handleRegBtnClick()" role="form" ng-init="registrationForm = {}">
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" ng-model="registrationForm.email" required="required" class="form-control">
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" ng-model="registrationForm.password" required="required" class="form-control">
-  </div>
-  <div class="form-group">
-    <label for="password_confirmation">Password confirmation</label>
-    <input type="password" name="password_confirmation" id="password_confirmation" ng-model="registrationForm.password_confirmation" required="required" class="form-control">
-  </div>
-  <button type="submit" class="btn btn-primary btn-lg">Register</button>
-</form>
+<div class="container">
+  <h1>New User Registration</h1>
+  <form role="form" ng-init="registrationForm = {}">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" ng-model="registrationForm.email" required="required" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" ng-model="registrationForm.password" required="required" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="password_confirmation">Password confirmation</label>
+      <input type="password" name="password_confirmation" id="password_confirmation" ng-model="registrationForm.password_confirmation" required="required" class="form-control">
+    </div>
+    <div class="form-group">
+      <span>I want to be a translator</span>
+      <input type="checkbox" name="translator" id="translator" ng-model="translator" />
+    </div>
+    <div class="form-group" ng-show="translator">
+      <label>Choose your languages</label>
+      <select id="lang" name="lang" ng-model="userLang">
+        <option ng-repeat="language in languages" value="{{ language.name }}">
+          {{ language.name }}
+        </option>
+      </select>
+      <a class="btn btn-primary btn-xs" ng-click="addUserLang()">Add</a>
+      <ul>
+        <li ng-repeat="lang in userLangs">{{ lang }}</li>
+      </ul>
+    </div>
+    <button type="submit" ng-click="handleRegBtnClick()" class="btn btn-primary btn-lg">Register</button>
+  </form>
+</div>
