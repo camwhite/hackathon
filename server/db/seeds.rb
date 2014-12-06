@@ -5,8 +5,29 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create(email: 'test@test.com',
-            password: 'password',
-            password_confirmation: 'password',
-            confirmed_at: Time.zone.now,
-            provider: 'email');
+testuser = User.new
+testuser.email = 'member@test.com'
+testuser.password = 'memberlongpassword'
+testuser.role = 'member'
+testuser.password_confirmation = 'memberlongpassword'
+testuser.confirmed_at = Time.zone.now
+testuser.provider = 'email'
+testuser.save!(:validate =>false)
+
+testtran = User.new
+testtran.email = 'translator@test.com'
+testtran.password = 'translatorlongpassword'
+testtran.role = 'translator'
+testtran.password_confirmation = 'translatorlongpassword'
+testtran.confirmed_at = Time.zone.now
+testtran.provider = 'email'
+testtran.save!
+
+testadmin = User.new
+testadmin.email = 'admin@test.com'
+testadmin.password = 'adminlongpassword'
+testadmin.role = 'translator'
+testadmin.password_confirmation = 'adminlongpassword'
+testadmin.confirmed_at = Time.zone.now
+testadmin.provider = 'email'
+testadmin.save!
