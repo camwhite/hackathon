@@ -5,16 +5,16 @@ class TranslationsController < ApplicationController
 
   def index
     @translations = Translation.all
-    respond_with(@translations)
+    render json: @translations
   end
 
   def show
-    respond_with(@translation)
+    render json: @translations
   end
 
   def new
     @translation = Translation.new
-    respond_with(@translation)
+    render json: @translations
   end
 
   def edit
@@ -23,17 +23,17 @@ class TranslationsController < ApplicationController
   def create
     @translation = Translation.new(translation_params)
     @translation.save
-    respond_with(@translation)
+    render json: @translations
   end
 
   def update
     @translation.update(translation_params)
-    respond_with(@translation)
+    render json: @translations
   end
 
   def destroy
     @translation.destroy
-    respond_with(@translation)
+    render json: @translations
   end
 
   private

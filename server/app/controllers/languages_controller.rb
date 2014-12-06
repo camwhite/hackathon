@@ -5,16 +5,16 @@ class LanguagesController < ApplicationController
 
   def index
     @languages = Language.all
-    respond_with(@languages)
+    render json: @languages
   end
 
   def show
-    respond_with(@language)
+render json: @languages
   end
 
   def new
     @language = Language.new
-    respond_with(@language)
+    render json: @languages
   end
 
   def edit
@@ -23,17 +23,17 @@ class LanguagesController < ApplicationController
   def create
     @language = Language.new(language_params)
     @language.save
-    respond_with(@language)
+    render json: @languages
   end
 
   def update
     @language.update(language_params)
-    respond_with(@language)
+    render json: @languages
   end
 
   def destroy
     @language.destroy
-    respond_with(@language)
+    render json: @languages
   end
 
   private
