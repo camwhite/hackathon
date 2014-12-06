@@ -1,7 +1,7 @@
 class LanguagesController < ApplicationController
   before_action :set_language, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  # respond_to :html
 
   def index
     @languages = Language.all
@@ -9,12 +9,13 @@ class LanguagesController < ApplicationController
   end
 
   def show
-render json: @languages
+    @language = Language.find(params[:id])
+    render json: @language
   end
 
   def new
     @language = Language.new
-    render json: @languages
+    render json: @language
   end
 
   def edit
@@ -22,18 +23,28 @@ render json: @languages
 
   def create
     @language = Language.new(language_params)
-    @language.save
-    render json: @languages
+    if @language.save
+      render json: @language, status: :created, location: @language
+    else
+      render json: @language.errors, status: :unprocessable_entity
+    end
   end
 
   def update
-    @language.update(language_params)
-    render json: @languages
+    @language = Language.find(params[:id])
+
+    if @language.update(language_params)
+      head :no_content
+    else
+      render json: @language.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
+    @language = Language.find(params[:id])
     @language.destroy
-    render json: @languages
+
+    head :no_content
   end
 
   private
@@ -42,6 +53,6 @@ render json: @languages
     end
 
     def language_params
-      params.require(:language).permit(:name)
+      params.require(:language).permit(:name, :id, :created_at, :updated_at)
     end
 end
