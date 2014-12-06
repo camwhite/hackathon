@@ -5,29 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-testuser = User.new
-testuser.email = 'member@test.com'
-testuser.password = 'memberlongpassword'
-testuser.role = 'member'
-testuser.password_confirmation = 'memberlongpassword'
-testuser.confirmed_at = Time.zone.now
-testuser.provider = 'email'
-testuser.save!(:validate =>false)
-
-testtran = User.new
-testtran.email = 'translator@test.com'
-testtran.password = 'translatorlongpassword'
-testtran.role = 'translator'
-testtran.password_confirmation = 'translatorlongpassword'
-testtran.confirmed_at = Time.zone.now
-testtran.provider = 'email'
-testtran.save!
-
-testadmin = User.new
-testadmin.email = 'admin@test.com'
-testadmin.password = 'adminlongpassword'
-testadmin.role = 'translator'
-testadmin.password_confirmation = 'adminlongpassword'
-testadmin.confirmed_at = Time.zone.now
-testadmin.provider = 'email'
-testadmin.save!
+Language.create([
+  {name: 'French'},
+  {name: 'Spanish'},
+  {name: 'Russian'},
+  {name: 'English'},
+  {name: 'Italian'},
+  {name: 'Latin'},
+  {name: 'German'},
+  {name: 'Polish'},
+  {name: 'Swedish'},
+  {name: 'Hindi'},
+  {name: 'Portuguese'},
+  {name: 'Japanese'},
+  {name: 'Punjabi'},
+  {name: 'Javanese'},
+  ])
