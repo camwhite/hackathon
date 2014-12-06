@@ -6,7 +6,7 @@
 * Controller of the fakeLunchHubApp
 */
 angular.module('clientApp')
-.controller('UserRegistrationsCtrl', ['$scope', '$location', '$auth', function ($scope, $location, $auth) {
+.controller('UserRegistrationsCtrl', ['$scope', '$location', '$auth', 'Language', function ($scope, $location, $auth, Language) {
   console.log('UserRegistrationsCtrl');
   $scope.$on('auth:registration-email-error', function(ev, reason) {
     $scope.error = reason.errors[0];
@@ -22,10 +22,11 @@ angular.module('clientApp')
   };
 
   $scope.translator = false;
-  $scope.languages = [
-    {name: 'Russian'},
-    {name: 'English'}
-  ];
+  // $scope.languages = [
+  //   {name: 'Russian'},
+  //   {name: 'English'}
+  // ];
+  $scope.languages = Language.query()
 
   $scope.userLang = '';
   $scope.userLangs  = [];
