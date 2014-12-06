@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20141206100316) do
+ActiveRecord::Schema.define(version: 20141206113742) do
 
   create_table "languages", force: true do |t|
     t.string   "name"
@@ -37,9 +36,6 @@ ActiveRecord::Schema.define(version: 20141206100316) do
   add_index "translations", ["status"], name: "index_translations_on_status"
   add_index "translations", ["translator"], name: "index_translations_on_translator"
   add_index "translations", ["user_id"], name: "index_translations_on_user_id"
-=======
-ActiveRecord::Schema.define(version: 20141206090450) do
->>>>>>> a5f03158d3f741e8ab4f6eb685269eae60800452
 
   create_table "users", force: true do |t|
     t.string   "provider",                            null: false
@@ -65,9 +61,11 @@ ActiveRecord::Schema.define(version: 20141206090450) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "role"
+    t.integer  "language_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email"
+  add_index "users", ["language_id"], name: "index_users_on_language_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
 
