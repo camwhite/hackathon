@@ -64,6 +64,21 @@ app.factory('User', ['$resource', function($resource) {
       'update': { method:'PUT' }
     });
 }]);
+app.factory('Language', ['$resource', function($resource) {
+    return $resource('/api/languages/:id.json', null, {
+      'update': { method:'PUT' }
+    });
+}]);
+app.factory('Translation', ['$resource', function($resource) {
+    return $resource('/api/translations/:id.json', null, {
+      'update': { method:'PUT' }
+    });
+}]);
+app.factory('TranslatorLanguage', ['$resource', function($resource) {
+    return $resource('/api/translator_languages/:id.json', null, {
+      'update': { method:'PUT' }
+    });
+}]);
 
 app.run(['$rootScope', '$location', function($rootScope, $location) {
   $rootScope.$on('auth:login-success', function() { $location.path('/');
