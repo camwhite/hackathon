@@ -25,9 +25,8 @@
     <div class="header">
       <ul class="nav nav-pills pull-right">
         <li ng-class="{ active: isActive('/') }"><a ng-href="/">Home</a></li>
-        <li><a ng-href="/translation">Translation</a></li>
-        <li><a ng-href="/">Contact</a></li>
-        <li ng-class="{ active: isActive('/users') }" ng-show="user.id"><a ng-href="/users">Users</a></li>
+        <li ng-class="{ active: isActive('/users') }" ng-show="user.id"><a ng-href="/translation">Translation</a></li>
+        <li ng-class="{ active: isActive('/users') }" ng-show="user.id"><a ng-href="/que">Que</a></li>
         <li ng-class="{ active: isActive('/sign_in') }" ng-show="!user.id"><a ng-href="/sign_in">Sign in</a></li>
         <li ng-class="{ active: isActive('/sign_up') }" ng-show="!user.id"><a ng-href="/sign_up">Sign up</a></li>
         <li ng-show="user.id"><a ng-click='signOut()'>Sign out</a></li>
@@ -98,6 +97,7 @@
         <script src="scripts/controllers/user_sessions.js"></script>
         <script src="scripts/controllers/user_registrations.js"></script>
         <script src="scripts/controllers/translation.js"></script>
+        <script src="scripts/controllers/que.js"></script>
         <!-- endbuild -->
 </body>
 </html>

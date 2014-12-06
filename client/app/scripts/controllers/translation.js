@@ -44,5 +44,5 @@ angular.module('clientApp')
       if(!$scope.on) {
         recognition.stop();
       }
-    }
+    };
   });
