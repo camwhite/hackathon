@@ -21,4 +21,16 @@ angular.module('clientApp')
     });
   };
 
+  $scope.translator = false;
+  $scope.languages = [
+    {name: 'Russian'},
+    {name: 'English'}
+  ];
+
+  $scope.userLang = '';
+  $scope.userLangs  = [];
+  $scope.addUserLang = function() {
+    $scope.userLangs.push($scope.userLang);
+  };
+
 }]);
