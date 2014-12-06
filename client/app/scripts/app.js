@@ -53,6 +53,10 @@ app.config(function ($routeProvider, $locationProvider) {
         templateUrl: 'views/que.html',
         controller: 'QueCtrl'
       })
+      .when('/translator', {
+        templateUrl: 'views/translator.html',
+        controller: 'TranslatorCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
