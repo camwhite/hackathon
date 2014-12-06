@@ -1,19 +1,14 @@
 Rails.application.routes.draw do
 
-  resources :translations, except: [:new, :edit]
-  resources :languages, except: [:new, :edit]
-  get 'languages/index'
-
-  get 'languages/create'
-
-  get 'languages/update'
-
-  get 'languages/destroy'
-
+  # root to: "home#index"
   scope '/api' do
     mount_devise_token_auth_for 'User', at: '/auth'
     resources :users, except: [:new, :edit]
+    resources :languages, except: [:new, :edit]
+    resources :translations, except: [:new, :edit]
   end
+
+  get 'localhost:3000/about', to: 'root#MainCtrl'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
