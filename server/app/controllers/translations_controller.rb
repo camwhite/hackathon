@@ -9,12 +9,13 @@ class TranslationsController < ApplicationController
   end
 
   def show
-    render json: @translations
+    @translation = Translation.find(params[:id])
+    render json: @translation
   end
 
   def new
     @translation = Translation.new
-    render json: @translations
+    render json: @translation
   end
 
   def edit
@@ -22,18 +23,28 @@ class TranslationsController < ApplicationController
 
   def create
     @translation = Translation.new(translation_params)
-    @translation.save
-    render json: @translations
+    if @translation.save
+      render json: @translation, status: :created, location: @translation
+    else
+      render json: @translation.errors, status: :unprocessable_entity
+    end
   end
 
   def update
-    @translation.update(translation_params)
-    render json: @translations
+    @translation = Translation.find(params[:id])
+
+    if @translation.update(translation_params)
+      head :no_content
+    else
+      render json: @translation.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
+    @translation = Translation.find(params[:id])
     @translation.destroy
-    render json: @translations
+
+    head :no_content
   end
 
   private
@@ -42,6 +53,7 @@ class TranslationsController < ApplicationController
     end
 
     def translation_params
-      params.require(:translation).permit(:user_id, :status, :fromText, :toText, :fromLanguage, :toLanguage, :completedAt, :status, :translator)
+      params.require(:translation).permit(:user_id, :status, :fromText, :toText, :fromLanguage,
+      :toLanguage, :completedAt, :status, :translator, :id, :created_at, :updated_at)
     end
 end
